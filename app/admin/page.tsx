@@ -33,24 +33,6 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'pending' | 'approved' | 'rejected'>('all');
 
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center">Loading...</div>
-      </div>
-    );
-  }
-
-  if (status === 'unauthenticated') {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-400">Access denied. Please log in.</p>
-        </div>
-      </div>
-    );
-  }
-
   const fetchSubmissions = async () => {
     try {
       const [submissionsResponse, statsResponse] = await Promise.all([
@@ -119,6 +101,24 @@ export default function AdminPage() {
     
     setFilteredSubmissions(filtered);
   }, [submissions, filter]);
+
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
+
+  if (status === 'unauthenticated') {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-400">Access denied. Please log in.</p>
+        </div>
+      </div>
+    );
+  }
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
