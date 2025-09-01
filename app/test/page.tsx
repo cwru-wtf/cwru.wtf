@@ -95,9 +95,44 @@ export default async function TestPage() {
                 <Button asChild className="bg-green-500 text-black hover:bg-green-400">
                   <Link href="/">Test Submission Form</Link>
                 </Button>
+                <Button asChild variant="outline" className="border-pink-500 text-pink-500 hover:bg-pink-500/10">
+                  <Link href="/login">Admin Login</Link>
+                </Button>
                 <Button asChild variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10">
                   <Link href="/admin">Admin Dashboard</Link>
                 </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-900 border-gray-700">
+            <CardHeader>
+              <CardTitle>Authentication System</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Status:</span>
+                  <span className="text-green-400">Active</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Admin Protection:</span>
+                  <span className="text-green-400">Enabled</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Login Page:</span>
+                  <span>/login</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Admin Dashboard:</span>
+                  <span>/admin (protected)</span>
+                </div>
+                <div className="p-3 bg-blue-900/50 border border-blue-700 rounded mt-4">
+                  <p className="text-blue-300 text-xs">
+                    💡 Admin users are created via the create-admin script. 
+                    Access to /admin requires authentication.
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -123,6 +158,14 @@ export default async function TestPage() {
                 <div className="flex justify-between">
                   <span className="text-gray-400">Default Status:</span>
                   <span className="text-yellow-500">Pending (null)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Authentication:</span>
+                  <span className="text-green-500">NextAuth.js</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Session Strategy:</span>
+                  <span>JWT</span>
                 </div>
               </div>
             </CardContent>

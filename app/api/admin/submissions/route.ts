@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { submissions } from '@/lib/schema';
 import { desc, eq } from 'drizzle-orm';
@@ -7,6 +8,15 @@ import { getEmailTemplate } from '@/lib/email-templates';
 
 export async function GET() {
   try {
+    const session = await auth();
+    
+    if (!session?.user || (session.user.role !== 'admin' && session.user.role !== 'super_admin')) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const allSubmissions = await db
       .select()
       .from(submissions)
@@ -25,6 +35,15 @@ export async function GET() {
 // Optional: Add a PATCH endpoint to approve/reject submissions
 export async function PATCH(request: NextRequest) {
   try {
+    const session = await auth();
+    
+    if (!session?.user || (session.user.role !== 'admin' && session.user.role !== 'super_admin')) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const { id, isApproved } = await request.json();
     
     const [updatedSubmission] = await db

@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
+import { LogOut, User } from 'lucide-react';
 
 interface Submission {
   id: number;
@@ -24,11 +26,30 @@ interface Stats {
 }
 
 export default function AdminPage() {
+  const { data: session, status } = useSession();
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [filteredSubmissions, setFilteredSubmissions] = useState<Submission[]>([]);
   const [stats, setStats] = useState<Stats>({ total: 0, approved: 0, pending: 0, rejected: 0 });
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'pending' | 'approved' | 'rejected'>('all');
+
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
+
+  if (status === 'unauthenticated') {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-400">Access denied. Please log in.</p>
+        </div>
+      </div>
+    );
+  }
 
   const fetchSubmissions = async () => {
     try {
@@ -125,12 +146,33 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="container mx-auto p-8">
-        <div className="mb-8">
-          <h1 className="font-mono text-4xl font-bold mb-2">
-            <span className="text-green-400">cwru</span>
-            <span className="text-pink-500">.wtf</span> Admin
-          </h1>
-          <p className="text-gray-400">Manage membership applications</p>
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="font-mono text-4xl font-bold mb-2">
+              <span className="text-green-400">cwru</span>
+              <span className="text-pink-500">.wtf</span> Admin
+            </h1>
+            <p className="text-gray-400">Manage membership applications</p>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="text-right">
+              <div className="flex items-center text-sm text-gray-400">
+                <User className="mr-2 h-4 w-4" />
+                {session?.user?.name}
+              </div>
+              <div className="text-xs text-gray-500">{session?.user?.email}</div>
+            </div>
+            <Button 
+              onClick={() => signOut({ callbackUrl: '/' })}
+              variant="outline" 
+              size="sm"
+              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Sign Out
+            </Button>
+          </div>
         </div>
 
         <div className="mb-8 grid gap-4 md:grid-cols-4">
