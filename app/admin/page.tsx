@@ -12,12 +12,12 @@ interface Submission {
   id: number;
   name: string;
   email: string;
-  categories: string;
-  otherCategory: string | null;
-  wtfIdea: string;
-  currentProject: string;
-  youtubeLink: string;
-  interests: string | null; // Keep for backward compatibility
+  categories?: string;
+  otherCategory?: string | null;
+  wtfIdea?: string;
+  currentProject?: string;
+  youtubeLink?: string;
+  interests?: string | null; // Keep for backward compatibility
   isApproved: boolean | null;
   createdAt: string;
   updatedAt: string;
@@ -282,43 +282,58 @@ export default function AdminPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-gray-300 mb-2">Categories:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {JSON.parse(submission.categories || '[]').map((category: string, index: number) => (
-                          <Badge key={index} variant="outline" className="text-xs">
-                            {category}
-                            {category === 'Other' && submission.otherCategory && ` (${submission.otherCategory})`}
-                          </Badge>
-                        ))}
+                    {submission.categories && (
+                      <div>
+                        <h4 className="font-semibold text-gray-300 mb-2">Categories:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {(() => {
+                            try {
+                              const categories = JSON.parse(submission.categories || '[]');
+                              return categories.map((category: string, index: number) => (
+                                <Badge key={index} variant="outline" className="text-xs">
+                                  {category}
+                                  {category === 'Other' && submission.otherCategory && ` (${submission.otherCategory})`}
+                                </Badge>
+                              ));
+                            } catch (e) {
+                              return <span className="text-gray-500 text-xs">Invalid category data</span>;
+                            }
+                          })()}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
-                    <div>
-                      <h4 className="font-semibold text-gray-300 mb-2">WTF Idea:</h4>
-                      <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
-                        {submission.wtfIdea}
-                      </p>
-                    </div>
+                    {submission.wtfIdea && (
+                      <div>
+                        <h4 className="font-semibold text-gray-300 mb-2">WTF Idea:</h4>
+                        <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
+                          {submission.wtfIdea}
+                        </p>
+                      </div>
+                    )}
 
-                    <div>
-                      <h4 className="font-semibold text-gray-300 mb-2">Current Project:</h4>
-                      <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
-                        {submission.currentProject}
-                      </p>
-                    </div>
+                    {submission.currentProject && (
+                      <div>
+                        <h4 className="font-semibold text-gray-300 mb-2">Current Project:</h4>
+                        <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
+                          {submission.currentProject}
+                        </p>
+                      </div>
+                    )}
 
-                    <div>
-                      <h4 className="font-semibold text-gray-300 mb-2">YouTube Interest:</h4>
-                      <a 
-                        href={submission.youtubeLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 underline break-all"
-                      >
-                        {submission.youtubeLink}
-                      </a>
-                    </div>
+                    {submission.youtubeLink && (
+                      <div>
+                        <h4 className="font-semibold text-gray-300 mb-2">YouTube Interest:</h4>
+                        <a 
+                          href={submission.youtubeLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-400 hover:text-blue-300 underline break-all"
+                        >
+                          {submission.youtubeLink}
+                        </a>
+                      </div>
+                    )}
 
                     {submission.interests && (
                       <div>
