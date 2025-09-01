@@ -11,7 +11,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "create-admin": "npx tsx scripts/create-admin.ts"
+    "create-admin": "npx tsx scripts/create-admin.ts",
+    "migrate-database": "node scripts/run-migrate-database.js"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.10.0",

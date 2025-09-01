@@ -8,7 +8,22 @@ import { logAction } from '@/lib/action-logger';
 const submissionSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.string().email('Invalid email address').endsWith('@case.edu', 'Must be a @case.edu email'),
-  interests: z.string().min(1, 'Please tell us what you want to build'),
+  categories: z.array(z.string()).min(1, 'Please select at least one category'),
+  otherCategory: z.string().optional(),
+  wtfIdea: z.string().min(1, 'Please tell us your WTF idea').max(600, 'Maximum 100 words (approximately 600 characters)'),
+  currentProject: z.string().min(1, 'Please tell us about your current project').max(600, 'Maximum 100 words (approximately 600 characters)'),
+  youtubeLink: z.string().url('Please enter a valid YouTube URL').refine((url) => url.includes('youtube.com') || url.includes('youtu.be'), {
+    message: 'Must be a YouTube link',
+  }),
+}).refine((data) => {
+  // If "Other" is selected, otherCategory should be provided
+  if (data.categories.includes('Other') && (!data.otherCategory || data.otherCategory.trim() === '')) {
+    return false;
+  }
+  return true;
+}, {
+  message: 'Please specify the other category',
+  path: ['otherCategory'],
 });
 
 export async function POST(request: NextRequest) {
@@ -38,7 +53,12 @@ export async function POST(request: NextRequest) {
       .values({
         name: validatedData.name,
         email: validatedData.email,
-        interests: validatedData.interests,
+        categories: JSON.stringify(validatedData.categories),
+        otherCategory: validatedData.otherCategory || null,
+        wtfIdea: validatedData.wtfIdea,
+        currentProject: validatedData.currentProject,
+        youtubeLink: validatedData.youtubeLink,
+        interests: null, // Keep for backward compatibility
       })
       .returning();
     

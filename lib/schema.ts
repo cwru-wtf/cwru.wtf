@@ -4,7 +4,12 @@ export const submissions = pgTable('submissions', {
   id: serial('id').primaryKey(),
   name: text('name').notNull(),
   email: text('email').notNull(),
-  interests: text('interests').notNull(),
+  categories: text('categories').notNull(), // JSON string of selected categories
+  otherCategory: text('other_category'), // If "Other" is selected
+  wtfIdea: text('wtf_idea').notNull(), // What do you want to build that would make you go WTF?
+  currentProject: text('current_project').notNull(), // What you have built or are building
+  youtubeLink: text('youtube_link').notNull(), // YouTube link
+  interests: text('interests'), // Keep for backward compatibility, can be removed later
   isApproved: boolean('is_approved'), // Default is null (pending)
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),

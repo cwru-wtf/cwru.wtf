@@ -12,7 +12,12 @@ interface Submission {
   id: number;
   name: string;
   email: string;
-  interests: string;
+  categories: string;
+  otherCategory: string | null;
+  wtfIdea: string;
+  currentProject: string;
+  youtubeLink: string;
+  interests: string | null; // Keep for backward compatibility
   isApproved: boolean | null;
   createdAt: string;
   updatedAt: string;
@@ -276,15 +281,57 @@ export default function AdminPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-gray-300 mb-2">What they want to build:</h4>
-                    <p className="text-gray-400 bg-gray-800 p-3 rounded">
-                      {submission.interests}
-                    </p>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-300 mb-2">Categories:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {JSON.parse(submission.categories || '[]').map((category: string, index: number) => (
+                          <Badge key={index} variant="outline" className="text-xs">
+                            {category}
+                            {category === 'Other' && submission.otherCategory && ` (${submission.otherCategory})`}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-300 mb-2">WTF Idea:</h4>
+                      <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
+                        {submission.wtfIdea}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-300 mb-2">Current Project:</h4>
+                      <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
+                        {submission.currentProject}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-300 mb-2">YouTube Interest:</h4>
+                      <a 
+                        href={submission.youtubeLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline break-all"
+                      >
+                        {submission.youtubeLink}
+                      </a>
+                    </div>
+
+                    {submission.interests && (
+                      <div>
+                        <h4 className="font-semibold text-gray-300 mb-2">Legacy Interests:</h4>
+                        <p className="text-gray-400 bg-gray-800 p-3 rounded text-sm">
+                          {submission.interests}
+                        </p>
+                      </div>
+                    )}
                   </div>
                   
                   {submission.isApproved === null && (
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 mt-4">
                       <Button 
                         onClick={() => updateSubmissionStatus(submission.id, true)}
                         className="bg-green-500 hover:bg-green-600 text-black"
