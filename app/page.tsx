@@ -3,6 +3,7 @@ import { ArrowRight, Code, Cpu, Rocket, Zap, Wrench, Github } from "lucide-react
 import { Button } from "@/components/ui/button"
 import ProjectCard from "@/components/project-card"
 import WtfMeanings from "@/components/wtf-meanings"
+import SubmissionForm from "@/components/submission-form"
 
 export default function Home() {
   return (
@@ -122,44 +123,7 @@ export default function Home() {
               Ready to build something awesome? Join our community of makers, hackers, and creators.
             </p>
 
-            <form className="mx-auto mt-8 max-w-md">
-              <div className="grid gap-4">
-                <div>
-                  <label htmlFor="name" className="sr-only">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Your Name"
-                    className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Your Email (@case.edu)"
-                    className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="interests" className="sr-only">
-                    Interests
-                  </label>
-                  <textarea
-                    id="interests"
-                    placeholder="What do you want to build?"
-                    rows={3}
-                    className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
-                  />
-                </div>
-                <Button className="bg-green-500 text-black hover:bg-green-400">Submit Application</Button>
-              </div>
-            </form>
+            <SubmissionForm />
           </div>
         </div>
       </section>
