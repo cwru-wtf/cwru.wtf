@@ -6,7 +6,7 @@ import WtfMeanings from "@/components/wtf-meanings"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="font-mono min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:30px_30px]" />
@@ -24,7 +24,7 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Button className="bg-green-500 text-black hover:bg-green-400">
-                Join the Club <ArrowRight className="ml-2 h-4 w-4" />
+                Join .wtf <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10">
                 Learn More
@@ -199,7 +199,7 @@ export default function Home() {
           </div>
           <div className="mt-8 border-t border-gray-800 pt-8 text-center">
             <p className="text-sm text-gray-400">
-              &copy; {new Date().getFullYear()} cwru.wtf | Case Western Reserve University
+              &copy; {new Date().getFullYear()} cwru.wtf
             </p>
           </div>
         </div>
