@@ -24,8 +24,10 @@ export default function Home() {
               building the future (or just building cool stuff).
             </p>
             <div className="mt-10 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-              <Button className="bg-green-500 text-black hover:bg-green-400">
-                Join .wtf <ArrowRight className="ml-2 h-4 w-4" />
+              <Button className="bg-green-500 text-black hover:bg-green-400" asChild>
+                <Link href="#join">
+                  Join .wtf <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
               <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10">
                 Learn More
@@ -115,7 +117,7 @@ export default function Home() {
       </section>
 
       {/* Join Section */}
-      <section className="bg-gradient-to-b from-black to-gray-900 py-20">
+      <section id="join" className="bg-gradient-to-b from-black to-gray-900 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl border border-green-500/20 bg-black/50 p-8 backdrop-blur-sm sm:p-12">
             <h2 className="text-center font-mono text-3xl font-bold text-white sm:text-4xl">Join cwru.wtf</h2>
