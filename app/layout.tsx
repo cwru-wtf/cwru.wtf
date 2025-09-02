@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "CWRU.WTF - We Tinker Fearlessly",
   description: "A collective of CWRU students building the future (or just building cool stuff).",
-  generator: 'v0.app',
   icons: {
     icon: '/favicon.svg',
   }
