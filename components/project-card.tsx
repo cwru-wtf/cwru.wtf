@@ -1,7 +1,11 @@
+"use client";
+
 import type { ReactNode } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { toast } from "sonner"
 
 interface ProjectCardProps {
   title: string
@@ -9,11 +13,18 @@ interface ProjectCardProps {
   tags: string[]
   image: string
   icon?: ReactNode
+  link?: string
 }
 
-export default function ProjectCard({ title, description, tags, image, icon }: ProjectCardProps) {
-  return (
-    <Card className="overflow-hidden border border-gray-800 bg-black/50 transition-all hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/10">
+export default function ProjectCard({ title, description, tags, image, icon, link }: ProjectCardProps) {
+  const handleClick = () => {
+    if (!link || link.trim() === "") {
+      toast.info("Coming soon!")
+    }
+  }
+
+  const cardContent = (
+    <Card className="overflow-hidden border border-gray-800 bg-black/50 transition-all hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer">
       <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
@@ -27,7 +38,7 @@ export default function ProjectCard({ title, description, tags, image, icon }: P
           {icon && <span className="text-green-400">{icon}</span>}
           <h3 className="font-mono text-xl font-bold text-white">{title}</h3>
         </div>
-        <p className="mt-2 text-gray-400">{description}</p>
+        <p className="mt-2 text-gray-400 whitespace-pre-line">{description}</p>
       </CardContent>
       <CardFooter className="flex flex-wrap gap-2 border-t border-gray-800 p-6">
         {tags.map((tag) => (
@@ -37,5 +48,19 @@ export default function ProjectCard({ title, description, tags, image, icon }: P
         ))}
       </CardFooter>
     </Card>
+  )
+
+  if (link && link.trim() !== "") {
+    return (
+      <Link href={link} target="_blank" rel="noopener noreferrer">
+        {cardContent}
+      </Link>
+    )
+  }
+
+  return (
+    <div onClick={handleClick}>
+      {cardContent}
+    </div>
   )
 }

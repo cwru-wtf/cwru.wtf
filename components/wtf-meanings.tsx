@@ -6,10 +6,9 @@ import { motion, AnimatePresence } from "framer-motion"
 const meanings = [
   "We Tinker Fearlessly",
   "Where Tech Flourishes",
-  "Won't Test Finished",
   "Weird Tech Fellowship",
   "Wired To Fabricate",
-  "Work, Tinker, Fail",
+  "Work, Tinker, Fly",
   "Why Things Function",
 ]
 

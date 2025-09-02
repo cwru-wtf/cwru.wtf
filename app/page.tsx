@@ -86,21 +86,34 @@ export default function Home() {
             Check out what our members have been building. From hardware to software, from practical to just-for-fun.
           </p>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
+          <div className="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
             <ProjectCard
-              title="CWRU Wordle"
-              description="A worldle version specific to CWRU"
+              title="CWRU Games"
+              description={`Games made by CWRU students, for CWRU students. \n From wordle to full game theory economic simulations.`}
               tags={["Software", "Web", "NextJS"]}
               image="/wordle.png"
               icon={<Code className="h-5 w-5" />}
+              link="https://games.cwru.wtf"
             />
             <ProjectCard
-              title="CWRU-WTF"
-              description="Coming soon"
-              tags={["Web", "AI", "Student Life", "Hardware", "WTF"]}
-              image="cwru-wtf.png"
-              icon={<Globe className="h-5 w-5" />}
+              title="*WTF Supercomputer"
+              description="A compute cluster made of donated compute from CWRU student's actual machines; For AI or High performance computing?"
+              tags={["Distributed systems", "AI", "Hardware"]}
+              image="wt-compute.png"
+              icon={<Cpu className="h-5 w-5" />}
+              link=""
             />
+
+         <ProjectCard
+              title="Interactive Art"
+              description="An interactive art installation that responds to environmental stimuli; creating an ever-evolving visual experience."
+              tags={["Art", "Electronics", "Hardware"]}
+              image="kinetic.png"
+              icon={<Wrench className="h-5 w-5" />}
+              link=""
+            />
+
+            
          
           </div>
 
