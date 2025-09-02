@@ -55,7 +55,7 @@ export default function Home() {
               <Zap className="h-10 w-10 text-green-400" />
               <h3 className="mt-4 font-mono text-xl font-bold text-white">Build Anything</h3>
               <p className="mt-2 text-gray-400">
-                Hardware hacks, AI experiments, open-source tools, weird websites, game dev—anything that makes you say
+                Hardware hacks, AI experiments, Large scale art, Films, open-source tools, weird websites, game dev—anything that makes you say
                 "wtf, I wanna try that."
               </p>
             </div>
