@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, Code, Cpu, Rocket, Zap, Wrench, Github } from "lucide-react"
+import { ArrowRight, Code, Cpu, Globe, Rocket, Zap, Wrench, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ProjectCard from "@/components/project-card"
 import WtfMeanings from "@/components/wtf-meanings"
@@ -84,28 +84,22 @@ export default function Home() {
             Check out what our members have been building. From hardware to software, from practical to just-for-fun.
           </p>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
             <ProjectCard
-              title="Smart Mirror"
-              description="A Raspberry Pi-powered mirror that displays weather, calendar, and news while you get ready."
-              tags={["Hardware", "Python", "IoT"]}
-              image="/placeholder.svg?height=200&width=400"
-              icon={<Cpu className="h-5 w-5" />}
-            />
-            <ProjectCard
-              title="Course Scheduler"
-              description="AI-powered tool to help CWRU students plan their perfect class schedule."
-              tags={["Web", "AI", "Student Life"]}
-              image="/placeholder.svg?height=200&width=400"
+              title="CWRU Wordle"
+              description="A worldle version specific to CWRU"
+              tags={["Software", "Web", "NextJS"]}
+              image="/wordle.png"
               icon={<Code className="h-5 w-5" />}
             />
             <ProjectCard
-              title="Drone Delivery"
-              description="Autonomous drone system for delivering small packages across campus."
-              tags={["Robotics", "C++", "Hardware"]}
-              image="/placeholder.svg?height=200&width=400"
-              icon={<Rocket className="h-5 w-5" />}
+              title="CWRU-WTF"
+              description="Coming soon"
+              tags={["Web", "AI", "Student Life", "Hardware", "WTF"]}
+              image="cwru-wtf.png"
+              icon={<Globe className="h-5 w-5" />}
             />
+         
           </div>
 
           <div className="mt-12 text-center">
