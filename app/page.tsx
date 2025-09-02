@@ -29,8 +29,10 @@ export default function Home() {
                   Join .wtf <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10">
-                Learn More
+              <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10" asChild>
+                <Link href="#about">
+                  Learn More
+                </Link>
               </Button>
             </div>
           </div>
@@ -38,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="bg-black py-20">
+      <section id="about" className="bg-black py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-center font-mono text-3xl font-bold text-white sm:text-4xl">What is cwru.wtf?</h2>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-gray-300">
