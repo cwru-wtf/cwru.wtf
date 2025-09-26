@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import ProjectCard from "@/components/project-card"
 import WtfMeanings from "@/components/wtf-meanings"
 import SubmissionForm from "@/components/submission-form"
+import GlitchyWtfText from "@/components/glitchy-wtf-text"
 
 export default function Home() {
   return (
@@ -19,10 +20,7 @@ export default function Home() {
               <span className="text-green-400">cwru</span>
               <span className="text-pink-500">.wtf</span>
             </h1>
-            <p className="mt-6 text-xl text-gray-300">
-              <span className="font-bold text-green-400">We Tinker Fearlessly.</span> A collective of CWRU students
-              building the future (or just building cool stuff).
-            </p>
+            <GlitchyWtfText />
             <div className="mt-10 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Button className="bg-green-500 text-black hover:bg-green-400" asChild>
                 <Link href="#join">
