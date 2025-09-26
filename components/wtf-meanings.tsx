@@ -5,11 +5,9 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const meanings = [
   "We Tinker Fearlessly",
-  "Where Tech Flourishes",
-  "Weird Tech Fellowship",
-  "Wired To Fabricate",
-  "Work, Tinker, Fly",
-  "Why Things Function",
+  "Wow! That's Fuego",
+  "Wow! That's Fire",
+  "We Transcend Fiction"
 ]
 
 export default function WtfMeanings() {

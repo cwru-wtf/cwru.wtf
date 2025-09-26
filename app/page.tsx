@@ -45,7 +45,7 @@ export default function Home() {
           <h2 className="text-center font-mono text-3xl font-bold text-white sm:text-4xl">What is cwru.wtf?</h2>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-gray-300">
             We're a student-led collective for builders, tinkerers, and dreamers at Case Western Reserve University.
-            This isn't a club where we talk about doing things. It's where we actually do them.
+            This isn't a club where we talk about doing things (we are in fact not a club!). It's where we actually do them.
           </p>
 
           <WtfMeanings />
@@ -86,7 +86,20 @@ export default function Home() {
             Check out what our members have been building. From hardware to software, from practical to just-for-fun.
           </p>
 
+          
+
           <div className="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+           
+                 <ProjectCard
+              title="FPGA Multilayer Perceptron"
+              description='Taking custom "AI" onto custom hardware! Designing and implementing a Neural Network directly on FPGA for high-speed, low-latency classification.'
+              tags={["FPGA", "AI", "Hardware", "Neural Networks"]}
+              image="/perceptrona.jpg"
+              icon={<Cpu className="h-5 w-5" />}
+              link=""
+              status="pending"
+            />
+
             <ProjectCard
               title="CWRU Games"
               description={`Games made by CWRU students, for CWRU students. \n From wordle to full game theory economic simulations.`}
@@ -94,7 +107,10 @@ export default function Home() {
               image="/wordle.png"
               icon={<Code className="h-5 w-5" />}
               link="https://games.cwru.wtf"
+              status="complete"
             />
+
+
             <ProjectCard
               title="*WTF Supercomputer"
               description="A compute cluster made of donated compute from CWRU student's actual machines; For AI or High performance computing?"
@@ -102,6 +118,7 @@ export default function Home() {
               image="wt-compute.png"
               icon={<Cpu className="h-5 w-5" />}
               link=""
+              status="in-progress"
             />
 
          <ProjectCard
@@ -111,8 +128,8 @@ export default function Home() {
               image="kinetic.png"
               icon={<Wrench className="h-5 w-5" />}
               link=""
+              status="pending"
             />
-
             
          
           </div>
