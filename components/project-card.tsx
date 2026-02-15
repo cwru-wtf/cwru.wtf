@@ -27,11 +27,11 @@ export default function ProjectCard({ title, description, tags, image, icon, lin
   const getStatusConfig = (status?: string) => {
     switch (status) {
       case 'in-progress':
-        return { label: 'In Progress', className: 'bg-blue-500/20 text-blue-400 border-blue-400' }
+        return { label: 'In Progress', className: 'bg-blue-50 text-blue-600 border-blue-200' }
       case 'pending':
-        return { label: 'Pending', className: 'bg-yellow-500/20 text-yellow-400 border-yellow-400' }
+        return { label: 'Pending', className: 'bg-yellow-50 text-yellow-700 border-yellow-200' }
       case 'complete':
-        return { label: 'Complete', className: 'bg-green-500/20 text-green-400 border-green-400' }
+        return { label: 'Complete', className: 'bg-green-50 text-green-700 border-green-200' }
       default:
         return null
     }
@@ -40,7 +40,7 @@ export default function ProjectCard({ title, description, tags, image, icon, lin
   const statusConfig = getStatusConfig(status)
 
   const cardContent = (
-    <Card className="overflow-hidden border border-gray-800 bg-black/50 transition-all hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer">
+    <Card className="overflow-hidden border border-border bg-card transition-all hover:border-foreground/30 hover:shadow-md cursor-pointer">
       <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
@@ -51,10 +51,10 @@ export default function ProjectCard({ title, description, tags, image, icon, lin
       </div>
       <CardContent className="p-6">
         <div className="flex items-center gap-2">
-          {icon && <span className="text-green-400">{icon}</span>}
-          <h3 className="font-mono text-xl font-bold text-white">{title}</h3>
+          {icon && <span className="text-muted-foreground">{icon}</span>}
+          <h3 className="font-mono text-xl font-bold">{title}</h3>
         </div>
-        <p className="mt-2 text-gray-400 whitespace-pre-line">{description}</p>
+        <p className="mt-2 text-muted-foreground whitespace-pre-line">{description}</p>
         {statusConfig && (
           <div className="mt-4 flex justify-end">
             <Badge className={`${statusConfig.className} text-xs font-medium`}>
@@ -63,9 +63,9 @@ export default function ProjectCard({ title, description, tags, image, icon, lin
           </div>
         )}
       </CardContent>
-      <CardFooter className="flex flex-wrap gap-2 border-t border-gray-800 p-6">
+      <CardFooter className="flex flex-wrap gap-2 border-t border-border p-6">
         {tags.map((tag) => (
-          <Badge key={tag} variant="outline" className="border-gray-700 bg-black/50 text-gray-300">
+          <Badge key={tag} variant="outline" className="border-border text-muted-foreground">
             {tag}
           </Badge>
         ))}

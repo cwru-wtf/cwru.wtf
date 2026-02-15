@@ -150,7 +150,7 @@ export default function SubmissionForm() {
             type="text"
             id="name"
             placeholder="Your Name"
-            className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
+            className="w-full rounded-md border border-border bg-background px-4 py-2 text-foreground focus:border-foreground focus:outline-none"
           />
           {errors.name && (
             <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
@@ -166,7 +166,7 @@ export default function SubmissionForm() {
             type="email"
             id="email"
             placeholder="Your Email (@case.edu)"
-            className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
+            className="w-full rounded-md border border-border bg-background px-4 py-2 text-foreground focus:border-foreground focus:outline-none"
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
@@ -174,24 +174,24 @@ export default function SubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-white mb-3">
+          <label className="block text-sm font-medium text-foreground mb-3">
             What's your thing?
           </label>
           <div className="space-y-2">
             {categoryOptions.map((category) => (
               <label
                 key={category}
-                className="flex items-center cursor-pointer hover:bg-gray-800 p-2 rounded"
+                className="flex items-center cursor-pointer hover:bg-accent p-2 rounded"
               >
                 <input
                   type="checkbox"
-                  className="w-4 h-4 text-green-500 bg-gray-700 border-gray-600 rounded focus:ring-green-500 focus:ring-2"
+                  className="w-4 h-4 text-green-500 bg-secondary border-border rounded focus:ring-foreground focus:ring-2"
                   checked={watchCategories?.includes(category) || false}
                   onChange={(e) =>
                     handleCategoryChange(category, e.target.checked)
                   }
                 />
-                <span className="ml-3 text-white">{category}</span>
+                <span className="ml-3 text-foreground">{category}</span>
               </label>
             ))}
           </div>
@@ -208,7 +208,7 @@ export default function SubmissionForm() {
               {...register("otherCategory")}
               type="text"
               placeholder="Please specify your other category"
-              className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
+              className="w-full rounded-md border border-border bg-background px-4 py-2 text-foreground focus:border-foreground focus:outline-none"
             />
             {errors.otherCategory && (
               <p className="mt-1 text-sm text-red-400">
@@ -227,7 +227,7 @@ export default function SubmissionForm() {
             id="wtfIdea"
             placeholder="What do you want to build that would make you go WTF? (100 words max)"
             rows={4}
-            className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none resize-vertical"
+            className="w-full rounded-md border border-border bg-background px-4 py-2 text-foreground focus:border-foreground focus:outline-none resize-vertical"
           />
           {errors.wtfIdea && (
             <p className="mt-1 text-sm text-red-400">
@@ -245,7 +245,7 @@ export default function SubmissionForm() {
             id="currentProject"
             placeholder="What's something you have built or are building right now? (100 words max)"
             rows={4}
-            className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none resize-vertical"
+            className="w-full rounded-md border border-border bg-background px-4 py-2 text-foreground focus:border-foreground focus:outline-none resize-vertical"
           />
           {errors.currentProject && (
             <p className="mt-1 text-sm text-red-400">
@@ -257,7 +257,7 @@ export default function SubmissionForm() {
         <div>
           <label
             htmlFor="youtubeLink"
-            className="block text-sm font-medium text-white mb-3"
+            className="block text-sm font-medium text-foreground mb-3"
           >
             Drop a link to a Youtube video of something that interests you!
           </label>
@@ -266,7 +266,7 @@ export default function SubmissionForm() {
             type="url"
             id="youtubeLink"
             placeholder="https://..."
-            className="w-full rounded-md border border-gray-700 bg-black px-4 py-2 text-white focus:border-green-500 focus:outline-none"
+            className="w-full rounded-md border border-border bg-background px-4 py-2 text-foreground focus:border-foreground focus:outline-none"
           />
           {errors.youtubeLink && (
             <p className="mt-1 text-sm text-red-400">
@@ -278,7 +278,7 @@ export default function SubmissionForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="bg-green-500 text-black hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-foreground text-background hover:bg-foreground/80 disabled:opacity-50 disabled:cursor-not-allowed rounded-full"
         >
           {isSubmitting ? "Submitting..." : "Submit Application"}
         </Button>

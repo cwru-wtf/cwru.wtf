@@ -23,7 +23,7 @@ export default function WtfMeanings() {
 
   return (
     <div className="mx-auto mt-12 max-w-lg text-center">
-      <h3 className="font-mono text-xl font-bold text-white">WTF means:</h3>
+      <h3 className="font-mono text-xl font-bold">WTF means:</h3>
       <div className="relative h-12 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
@@ -35,7 +35,7 @@ export default function WtfMeanings() {
             className="absolute inset-0 flex items-center justify-center"
           >
             <p className="text-2xl font-bold">
-              <span className="text-green-400">{meanings[currentIndex].split(" ")[0]}</span>{" "}
+              <span className="text-green-500">{meanings[currentIndex].split(" ")[0]}</span>{" "}
               <span className="text-pink-500">{meanings[currentIndex].split(" ")[1]}</span>{" "}
               <span className="text-yellow-500">{meanings[currentIndex].split(" ")[2]}</span>
             </p>
