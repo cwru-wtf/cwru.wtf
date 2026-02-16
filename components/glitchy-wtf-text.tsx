@@ -126,7 +126,7 @@ export default function GlitchyWtfText() {
 
   return (
     <motion.p
-      className="text-xl text-muted-foreground font-mono"
+      className="text-6xl text-muted-foreground font-mono"
       animate={isGlitching ? {
         x: [0, -0.5, 0.5, 0],
       } : {}}

@@ -14,7 +14,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/cled-bg.png" 
+            src="/cle-bg.png" 
             alt=""
             fill
             className="object-cover object-center"
