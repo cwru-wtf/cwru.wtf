@@ -5,6 +5,7 @@ import { fontSans, fontSerif, fontMono } from "@/lib/fonts"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "sonner"
 import { SessionProvider } from "next-auth/react"
+import Navbar from "@/components/navbar"
 
 export const metadata: Metadata = {
   title: "CWRU.WTF - We Tinker Fearlessly",
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+            <Navbar />
             {children}
             <Toaster
               theme="light"

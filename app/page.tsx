@@ -55,7 +55,7 @@ export default function Home() {
             <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground mb-4">
               What We Do
             </p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+            <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
               What is cwru.wtf?
             </h2>
             <p className="font-sans text-xl leading-7 text-muted-foreground max-w-2xl">
@@ -99,7 +99,7 @@ export default function Home() {
       </div>
 
       {/* Projects Section */}
-      <section className="py-20 md:py-32">
+      <section id="projects" className="py-20 md:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground mb-4">
