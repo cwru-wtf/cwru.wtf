@@ -11,37 +11,34 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/cled-bg.png" 
+            src="/bgbg.jpg"
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-center blur-sm scale-105"
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/80 to-white" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground">
-              cwru.wtf
-            </p>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]">
-              <span className="text-green-500">cwru</span>
-              <span className="text-pink-500">.wtf</span>
+<h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]">
+              <span className="text-green-400">cwru</span>
+              <span className="text-pink-400">.wtf</span>
             </h1>
             <GlitchyWtfText />
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            <p className="font-sans text-xl leading-7 text-white/80 max-w-xl mx-auto">
               A student-led collective for builders, tinkerers, and dreamers at Case Western Reserve University.
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-2">
-              <Button className="rounded-full bg-foreground text-background hover:bg-foreground/80 px-8 py-3 font-mono text-sm" asChild>
+              <Button className="rounded-full bg-black text-white hover:bg-black/80 px-8 py-3 font-mono text-sm" asChild>
                 <Link href="#join">
                   Join .wtf <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" className="rounded-full border-border text-foreground hover:bg-muted px-8 py-3 font-mono text-sm" asChild>
+              <Button className="rounded-full bg-white text-black hover:bg-white/90 px-8 py-3 font-mono text-sm" asChild>
                 <Link href="#about">
                   Learn More
                 </Link>
@@ -61,7 +58,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
               What is cwru.wtf?
             </h2>
-            <p className="text-muted-foreground leading-relaxed text-lg max-w-2xl">
+            <p className="font-sans text-xl leading-7 text-muted-foreground max-w-2xl">
               This isn&apos;t a club where we talk about doing things (we are in fact not a club!).
               It&apos;s where we actually do them. Hardware hacks, AI experiments, art installations,
               films, open-source tools, weird websites&mdash;anything that makes you say &ldquo;wtf, I wanna try that.&rdquo;
@@ -74,21 +71,21 @@ export default function Home() {
             <div className="space-y-4">
               <Zap className="h-6 w-6 text-green-500" />
               <h3 className="font-serif text-xl font-bold">Build Anything</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="font-sans text-xl leading-7 text-muted-foreground">
                 Hardware hacks, AI experiments, large scale art, films, open-source tools, weird websites, game dev&mdash;anything goes.
               </p>
             </div>
             <div className="space-y-4">
               <Wrench className="h-6 w-6 text-pink-500" />
               <h3 className="font-serif text-xl font-bold">Learn by Doing</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="font-sans text-xl leading-7 text-muted-foreground">
                 No experience required. Just curiosity and a willingness to build. We learn through projects, not lectures.
               </p>
             </div>
             <div className="space-y-4">
               <Rocket className="h-6 w-6 text-yellow-500" />
               <h3 className="font-serif text-xl font-bold">Ship It</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="font-sans text-xl leading-7 text-muted-foreground">
                 We host late-night build sessions, mentor each other, and collaborate on projects that make us excited.
               </p>
             </div>
@@ -111,7 +108,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight">
               Featured Projects
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed text-lg">
+            <p className="mt-4 font-sans text-xl leading-7 text-muted-foreground max-w-2xl">
               Check out what our members have been building. From hardware to software, from practical to just-for-fun.
             </p>
           </div>
@@ -181,7 +178,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight">
               Join cwru.wtf
             </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+            <p className="mt-4 font-sans text-xl leading-7 text-muted-foreground">
               Ready to build something awesome? Join our community of makers, hackers, and creators.
             </p>
           </div>

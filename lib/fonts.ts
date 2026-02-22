@@ -2,7 +2,8 @@ import {
   Space_Mono,
   Nunito,
   Literata,
-  Instrument_Serif
+  Instrument_Serif, 
+  Instrument_Sans
 } from "next/font/google"
 
 export const fontMono = Space_Mono({
@@ -11,7 +12,7 @@ export const fontMono = Space_Mono({
   variable: "--font-mono",
 })
 
-export const fontSans = Nunito({
+export const fontSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
