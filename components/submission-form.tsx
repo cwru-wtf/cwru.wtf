@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import PhoneInput from "@/components/phone-input";
 
 const submissionSchema = z
   .object({
@@ -27,6 +28,7 @@ const submissionSchema = z
       .min(1, "Please tell us about your current project")
       .max(600, "Maximum 100 words (approximately 600 characters)"),
     youtubeLink: z.string().url("Please enter a valid URL"),
+    whatsapp: z.string().optional(),
   })
   .refine(
     (data) => {
@@ -50,6 +52,7 @@ type SubmissionData = z.infer<typeof submissionSchema>;
 export default function SubmissionForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showOtherInput, setShowOtherInput] = useState(false);
+  const [whatsappValue, setWhatsappValue] = useState("");
 
   const {
     register,
@@ -87,6 +90,7 @@ export default function SubmissionForm() {
         );
         reset();
         setShowOtherInput(false);
+        setWhatsappValue("");
       } else {
         if (result.error === "Email already submitted") {
           toast.error(
@@ -171,6 +175,20 @@ export default function SubmissionForm() {
           {errors.email && (
             <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
           )}
+        </div>
+
+        <div>
+          <PhoneInput
+            value={whatsappValue}
+            onChange={(val) => {
+              setWhatsappValue(val);
+              setValue("whatsapp", val);
+            }}
+            placeholder="WhatsApp number (optional)"
+          />
+          <p className="mt-1.5 text-xs text-muted-foreground flex items-center gap-1">
+            <span>💬</span> Our community hangs out on WhatsApp — drop your number to stay in the loop
+          </p>
         </div>
 
         <div>

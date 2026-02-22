@@ -15,6 +15,7 @@ const submissionSchema = z.object({
   youtubeLink: z.string().url('Please enter a valid YouTube URL').refine((url) => url.includes('youtube.com') || url.includes('youtu.be'), {
     message: 'Must be a YouTube link',
   }),
+  whatsapp: z.string().optional(),
 }).refine((data) => {
   // If "Other" is selected, otherCategory should be provided
   if (data.categories.includes('Other') && (!data.otherCategory || data.otherCategory.trim() === '')) {
@@ -58,6 +59,7 @@ export async function POST(request: NextRequest) {
         wtfIdea: validatedData.wtfIdea,
         currentProject: validatedData.currentProject,
         youtubeLink: validatedData.youtubeLink,
+        whatsapp: validatedData.whatsapp || null,
         interests: null, // Keep for backward compatibility
       })
       .returning();

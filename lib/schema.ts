@@ -9,6 +9,7 @@ export const submissions = pgTable('submissions', {
   wtfIdea: text('wtf_idea').notNull(), // What do you want to build that would make you go WTF?
   currentProject: text('current_project').notNull(), // What you have built or are building
   youtubeLink: text('youtube_link').notNull(), // YouTube link
+  whatsapp: text('whatsapp'), // Optional WhatsApp phone number
   interests: text('interests'), // Keep for backward compatibility, can be removed later
   isApproved: boolean('is_approved'), // Default is null (pending)
   createdAt: timestamp('created_at').defaultNow().notNull(),

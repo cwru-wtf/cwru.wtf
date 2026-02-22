@@ -67,6 +67,7 @@
     "react-day-picker": "9.8.0",
     "react-dom": "^19",
     "react-hook-form": "^7.54.1",
+    "react-international-phone": "^4.8.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
     "sonner": "^1.7.1",
@@ -86,6 +87,6 @@
     "tailwindcss": "^3.4.17",
     "tsx": "^4.20.5",
     "typescript": "^5"
-  }, 
+  },
   "packageManager": "pnpm@9.0.0"
 }
