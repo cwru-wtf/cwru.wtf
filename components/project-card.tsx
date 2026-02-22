@@ -1,10 +1,9 @@
 "use client";
 
-import type { ReactNode } from "react"
+import { useState, type ReactNode } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { ArrowUpRight } from "lucide-react"
 import { toast } from "sonner"
 
 interface ProjectCardProps {
@@ -17,73 +16,92 @@ interface ProjectCardProps {
   status?: 'in-progress' | 'pending' | 'complete'
 }
 
-export default function ProjectCard({ title, description, tags, image, icon, link, status }: ProjectCardProps) {
+const STATUS = {
+  'in-progress': { label: 'In Progress', dot: 'bg-blue-400' },
+  'pending':     { label: 'Coming Soon', dot: 'bg-amber-400' },
+  'complete':    { label: 'Live',         dot: 'bg-green-400' },
+}
+
+export default function ProjectCard({ title, description, tags, image, link, status }: ProjectCardProps) {
+  const [hovered, setHovered] = useState(false)
+  const hasLink = !!(link && link.trim() !== "")
+  const statusConf = status ? STATUS[status] : null
+
   const handleClick = () => {
-    if (!link || link.trim() === "") {
-      toast.info("Coming soon!")
-    }
+    if (!hasLink) toast.info("Coming soon!")
   }
 
-  const getStatusConfig = (status?: string) => {
-    switch (status) {
-      case 'in-progress':
-        return { label: 'In Progress', className: 'bg-blue-50 text-blue-600 border-blue-200' }
-      case 'pending':
-        return { label: 'Pending', className: 'bg-yellow-50 text-yellow-700 border-yellow-200' }
-      case 'complete':
-        return { label: 'Complete', className: 'bg-green-50 text-green-700 border-green-200' }
-      default:
-        return null
-    }
-  }
-
-  const statusConfig = getStatusConfig(status)
-
-  const cardContent = (
-    <Card className="overflow-hidden border border-border bg-card transition-all hover:border-foreground/30 hover:shadow-md cursor-pointer">
-      <div className="relative h-48 w-full overflow-hidden">
+  const card = (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group bg-white rounded-2xl overflow-hidden border border-border cursor-pointer h-full flex flex-col transition-all duration-300"
+      style={{
+        boxShadow: hovered
+          ? '0 20px 40px -8px rgba(0,0,0,0.12), 0 8px 16px -4px rgba(0,0,0,0.08)'
+          : '0 1px 4px rgba(0,0,0,0.06)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+      }}
+    >
+      {/* Image */}
+      <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-cover transition-transform duration-300 hover:scale-105"
+          className={`object-cover transition-transform duration-500 ${hovered ? 'scale-105' : 'scale-100'}`}
         />
-      </div>
-      <CardContent className="p-6">
-        <div className="flex items-center gap-2">
-          {icon && <span className="text-muted-foreground">{icon}</span>}
-          <h3 className="font-mono text-xl font-bold">{title}</h3>
-        </div>
-        <p className="mt-2 text-muted-foreground whitespace-pre-line">{description}</p>
-        {statusConfig && (
-          <div className="mt-4 flex justify-end">
-            <Badge className={`${statusConfig.className} text-xs font-medium`}>
-              {statusConfig.label}
-            </Badge>
+
+        {/* Status badge */}
+        {statusConf && (
+          <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
+            <span className={`h-1.5 w-1.5 rounded-full ${statusConf.dot}`} />
+            <span className="text-xs font-mono font-medium text-foreground">{statusConf.label}</span>
           </div>
         )}
-      </CardContent>
-      <CardFooter className="flex flex-wrap gap-2 border-t border-border p-6">
-        {tags.map((tag) => (
-          <Badge key={tag} variant="outline" className="border-border text-muted-foreground">
-            {tag}
-          </Badge>
-        ))}
-      </CardFooter>
-    </Card>
+
+        {/* Link arrow */}
+        {hasLink && (
+          <div
+            className="absolute top-3 right-3 h-8 w-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm transition-all duration-200"
+            style={{ opacity: hovered ? 1 : 0, transform: hovered ? 'scale(1)' : 'scale(0.8)' }}
+          >
+            <ArrowUpRight className="h-4 w-4 text-foreground" />
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-5 gap-2">
+        <h3 className="font-serif text-lg font-bold text-foreground leading-snug">
+          {title}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 flex-1">
+          {description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 pt-3 mt-1 border-t border-border">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-mono text-muted-foreground"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 
-  if (link && link.trim() !== "") {
+  if (hasLink) {
     return (
-      <Link href={link} target="_blank" rel="noopener noreferrer">
-        {cardContent}
+      <Link href={link!} target="_blank" rel="noopener noreferrer" className="block h-full">
+        {card}
       </Link>
     )
   }
 
-  return (
-    <div onClick={handleClick}>
-      {cardContent}
-    </div>
-  )
+  return <div onClick={handleClick} className="h-full">{card}</div>
 }

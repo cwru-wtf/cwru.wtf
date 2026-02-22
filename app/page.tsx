@@ -55,7 +55,7 @@ export default function Home() {
             <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground mb-4">
               What We Do
             </p>
-            <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+            <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
               What is cwru.wtf?
             </h2>
             <p className="font-sans text-xl leading-7 text-muted-foreground max-w-2xl">
@@ -113,7 +113,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
             <ProjectCard
               title="FPGA Multilayer Perceptron"
               description='Taking custom "AI" onto custom hardware! Designing and implementing a Neural Network directly on FPGA for high-speed, low-latency classification.'
